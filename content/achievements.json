@@ -1,0 +1,20 @@
+{
+  "heading": "Achievements",
+  "items": [
+    {
+      "icon": "military_tech",
+      "title": "AIR 7168 in GATE CS",
+      "description": "Achieved top 1.01% nationwide ranking in Computer Science & Information Technology."
+    },
+    {
+      "icon": "star",
+      "title": "Star of the Quarter",
+      "description": "Recognized for exceptional performance and technical leadership at Wisdmlabs."
+    },
+    {
+      "icon": "verified",
+      "title": "TCS iON Software Engineering",
+      "description": "Qualified in Software Engineering Industrial Practice certification."
+    }
+  ]
+}

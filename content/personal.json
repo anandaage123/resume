@@ -1,0 +1,21 @@
+{
+  "languages": {
+    "heading": "Languages",
+    "headingIcon": "language",
+    "items": [
+      { "code": "EN", "name": "English" },
+      { "code": "HI", "name": "Hindi" },
+      { "code": "MA", "name": "Marathi" }
+    ]
+  },
+  "interests": {
+    "heading": "Interests",
+    "headingIcon": "interests",
+    "items": [
+      { "icon": "podcasts", "label": "Podcasts" },
+      { "icon": "sports_esports", "label": "PC Games" },
+      { "icon": "animation", "label": "Anime" },
+      { "icon": "chess", "label": "Chess" }
+    ]
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "heading": "Education",
+  "entries": [
+    {
+      "degreeLabel": "Master of Science",
+      "degreeTone": "primary",
+      "field": "Computer Science",
+      "institution": "Fergusson College",
+      "metric": "9.75 CGPA",
+      "metricTone": "primary",
+      "borderAccent": "primary"
+    },
+    {
+      "degreeLabel": "Bachelor of Science",
+      "degreeTone": "muted",
+      "field": "Computer Science",
+      "institution": "Modern College",
+      "metric": "70.16%",
+      "metricTone": "default",
+      "borderAccent": "outline"
+    }
+  ]
+}

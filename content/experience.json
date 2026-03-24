@@ -1,0 +1,24 @@
+{
+  "sectionHeading": {
+    "plain": "Career",
+    "accent": "Telemetry"
+  },
+  "entries": [
+    {
+      "period": "June 2025 — August 2025",
+      "periodTone": "primary",
+      "title": "Sr. Wordpress Developer",
+      "company": "E2M",
+      "description": "Leading high-performance enterprise CMS solutions with a focus on optimization and developer experience. Mentoring junior developers and streamlining release cycles.",
+      "timelineDot": "filled"
+    },
+    {
+      "period": "January 2021 — May 2025",
+      "periodTone": "muted",
+      "title": "Software Developer",
+      "company": "Wisdmlabs",
+      "description": "Full-stack application development focusing on complex plugin architectures, subscription engines, and performance engineering. Transitioned legacy systems to modern CI/CD patterns.",
+      "timelineDot": "outline"
+    }
+  ]
+}

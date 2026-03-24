@@ -1,0 +1,36 @@
+{
+  "eyebrow": "System Initialize // DevOps Lead",
+  "name": {
+    "first": "Anand",
+    "accent": "Aage"
+  },
+  "intro": {
+    "beforeHighlight": "Experienced developer transitioning to ",
+    "highlight": "DevOps Architect",
+    "afterHighlight": ". Bridging the gap between full-stack engineering and cloud-native orchestration."
+  },
+  "contactChips": [
+    {
+      "icon": "mail",
+      "text": "anand.aage.work@gmail.com",
+      "href": "mailto:anand.aage.work@gmail.com"
+    },
+    {
+      "icon": "call",
+      "text": "+91 7507562825",
+      "href": "tel:+917507562825"
+    }
+  ],
+  "terminal": {
+    "windowTitle": "Terminal — Summary.sh",
+    "promptLine": "cat profile.json",
+    "jsonFields": [
+      { "key": "focus", "value": "AWS, Jenkins, Kubernetes" },
+      { "key": "expertise", "value": "Automation & Scalability" },
+      { "key": "pivoting", "rawValue": "true" },
+      { "key": "status", "value": "Active" }
+    ],
+    "bodyParagraph": "Pivoting with strong expertise in Cloud, CI/CD pipelines, and Infrastructure as Code. Leveraging 4+ years of full-stack engineering to build resilient systems.",
+    "cursorMailto": "anand.aage.work@gmail.com"
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "sectionHeading": {
+    "plain": "Core",
+    "accent": "Toolchain"
+  },
+  "toolchain": [
+    {
+      "category": "Cloud",
+      "name": "AWS",
+      "icon": "cloud",
+      "radarLayers": 2,
+      "radarDelays": [0, 0.5]
+    },
+    {
+      "category": "CI/CD",
+      "name": "Jenkins",
+      "icon": "settings_suggest",
+      "radarLayers": 1,
+      "radarDelays": [0.2]
+    },
+    {
+      "category": "Orchestrator",
+      "name": "Kubernetes",
+      "icon": "hub",
+      "radarLayers": 1,
+      "radarDelays": [0.7]
+    },
+    {
+      "category": "Scripting",
+      "name": "Python",
+      "icon": "terminal",
+      "radarLayers": 1,
+      "radarDelays": [0.7]
+    },
+    {
+      "category": "Storage",
+      "name": "SQL",
+      "icon": "database",
+      "radarLayers": 1,
+      "radarDelays": [0.7]
+    },
+    {
+      "category": "Core",
+      "name": "Java / C++",
+      "icon": "code",
+      "radarLayers": 2,
+      "radarDelays": [0.7, 0.9]
+    }
+  ],
+  "secondaryTags": [
+    "WordPress",
+    "PHP",
+    "Javascript",
+    "HTML/CSS",
+    "Linux Terminal"
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "sectionHeading": {
+    "plain": "Infrastructure",
+    "accent": "Deployments"
+  },
+  "projects": [
+    {
+      "title": "Advanced WooCommerce Subscription Platform",
+      "descriptionParts": [
+        { "text": "Integrated complex content restriction logic and payment gateways. Optimized database queries and caching to improve performance by ", "emphasis": false },
+        { "text": "25%", "emphasis": true },
+        { "text": ".", "emphasis": false }
+      ],
+      "image": {
+        "src": "https://lh3.googleusercontent.com/aida-public/AB6AXuAFbT1IJRwNAKG77CyX09SpqV-UuxHdS3tOFxvDpK2jTyaAidL_UpdK_u8RXAFOpTXEtyrscajlEiMMzLnyr0_4VM5O6nEcFvrVXKZ-OwE_GHs4FUrYfKtwBcnOVZDedXedSw7aT3ZrCM4qSH7B_edJARR_IDDp6OFAuosTTl3vUksg6fgEqtAvLsxqCpmiqtOenDN-wc2WvLoZ10EhLowI2fBrIghcMrWRgFThYvzh4ubn6G4AuOC3660ulxD62LG1huSQBGfA1cg",
+        "alt": "Screenshot of an advanced e-commerce dashboard and interface"
+      },
+      "tags": ["WooCommerce", "Stripe"],
+      "highlights": [
+        "Custom Plugin Development",
+        "Content Restriction Engines"
+      ]
+    },
+    {
+      "title": "High-Performance Learning Platform",
+      "descriptionParts": [
+        { "text": "Engineered a custom-themed educational portal. Achieved load times ", "emphasis": false },
+        { "text": "< 1.5s", "emphasis": true },
+        { "text": " using advanced caching and CDN optimization.", "emphasis": false }
+      ],
+      "image": {
+        "src": "https://lh3.googleusercontent.com/aida-public/AB6AXuCFzQcBIR32ybKcdyrnFaKUQmoDMsjp1s413RV9jfTMfLfSmvbYWpG13N3dl9wD3-tARhKM44YL1cetUTuUJfSsFrE5w6vIbRaICkhvy-sJmpDjk2pknQ8fUJPIoE9hiWz4RMbPeZZVz8pf_jsSKEwbQDaxeAUw7LB1VvitAYBFsqSMG38qM2CBDbfk2WKGnHAPrEbiYVf3x8zqY2UW_OL1zgyiEyCcB4Cuzfx-us2Wk0HWQYTsYf8A6KTxSmArVDv5x7Pm3Mn1vrw",
+        "alt": "Close up of high speed web performance charts and lighthouse metrics"
+      },
+      "tags": ["Lighthouse 95+", "Cloudflare","Aws","Jenkins","Kubernetes"],
+      "highlights": [
+        "WP Rocket & ACF Pro Implementation",
+        "Advanced SEO & Mobile First Design"
+      ]
+    }
+  ]
+}
