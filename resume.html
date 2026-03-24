@@ -145,12 +145,16 @@
             box-shadow: 0 0 32px rgba(0, 218, 243, 0.8);
         }
         #cursor-dot, #cursor-ring {
+            display: none;
             position: fixed;
             pointer-events: none;
             z-index: 100;
             mix-blend-mode: screen;
             transform: translate3d(-50%, -50%, 0);
             opacity: 0.95;
+        }
+        body.desktop-cursor #cursor-dot, body.desktop-cursor #cursor-ring {
+            display: block;
         }
         #cursor-dot {
             width: 10px;
@@ -178,7 +182,7 @@
             cursor: none !important;
         }
         @media (hover: none), (pointer: coarse) {
-            #cursor-dot, #cursor-ring, .floating-bubble {
+            .floating-bubble {
                 display: none !important;
             }
             body, a, button, input {
@@ -635,13 +639,18 @@
     // Custom mouse pointer trail with GSAP smooth follow
     const cursorDot = document.getElementById('cursor-dot');
     const cursorRing = document.getElementById('cursor-ring');
-    const isTouchDevice = ('ontouchstart' in window) || navigator.maxTouchPoints > 0 || navigator.msMaxTouchPoints > 0;
+    const canHover = window.matchMedia('(hover: hover)').matches;
+    const isCoarse = window.matchMedia('(pointer: coarse)').matches;
+    const useCustomCursor = canHover && !isCoarse;
 
-    if (isTouchDevice) {
+    if (!useCustomCursor) {
         cursorDot.style.display = 'none';
         cursorRing.style.display = 'none';
         document.body.style.cursor = 'auto';
+        document.body.classList.remove('desktop-cursor');
     } else {
+        document.body.classList.add('desktop-cursor');
+
         let mouseX = window.innerWidth / 2;
         let mouseY = window.innerHeight / 2;
         let ringX = mouseX;
