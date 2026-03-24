@@ -36,15 +36,13 @@ if ($size === false) {
     exit;
 }
 
-$basename = basename($file);
+$downloadName = 'Anand_Aage_DevOps_Architect_CV.pdf';
 
 header('Content-Type: application/pdf');
 header('Content-Length: ' . (string) $size);
-// UTF-8 filename for non-ASCII names; ASCII fallback for older clients
-$asciiFallback = preg_replace('/[^\x20-\x7E]/', '_', $basename) ?: 'resume.pdf';
 header(
-    'Content-Disposition: attachment; filename="' . str_replace(['\\', '"'], '', $asciiFallback)
-    . '"; filename*=UTF-8\'\'' . rawurlencode($basename)
+    'Content-Disposition: attachment; filename="' . str_replace(['\\', '"'], '', $downloadName)
+    . '"; filename*=UTF-8\'\'' . rawurlencode($downloadName)
 );
 
 readfile($file);
