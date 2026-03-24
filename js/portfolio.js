@@ -1,10 +1,20 @@
 /**
  * Loads JSON from /content and renders the portfolio. Serve the site over HTTP
- * with PHP (e.g. php -S localhost:8080) so fetch() can read JSON and Download CV
- * can use cv.php to pick the newest PDF in PDF/.
+ * so fetch() can read JSON. Download CV fetches cv.php (needs PHP for dynamic
+ * PDF) or falls back to content/cv.json → pdfRelativePath on static servers.
  */
 (function () {
   const CONTENT_BASE = "content";
+
+  async function loadOptionalJson(name) {
+    try {
+      const res = await fetch(`${CONTENT_BASE}/${name}.json`);
+      if (!res.ok) return null;
+      return res.json();
+    } catch {
+      return null;
+    }
+  }
 
   function escapeHtml(s) {
     if (s == null) return "";
@@ -21,7 +31,7 @@
     return res.json();
   }
 
-  function renderNav(container, data) {
+  function renderNav(container, data, cvMeta) {
     container.querySelector(".site-brand").textContent = data.brand;
     const wrap = container.querySelector(".site-nav__links");
     wrap.innerHTML = "";
@@ -38,11 +48,28 @@
     if (cvBtn) {
       cvBtn.textContent = data.downloadCvLabel;
       cvBtn.setAttribute("aria-label", data.downloadCvLabel);
-      const cvHref = data.cvDownloadHref != null && String(data.cvDownloadHref).trim() !== ""
-        ? String(data.cvDownloadHref).trim()
-        : "cv.php";
-      cvBtn.href = cvHref;
-      cvBtn.removeAttribute("download");
+      const fetchUrl =
+        data.cvDownloadHref != null && String(data.cvDownloadHref).trim() !== ""
+          ? String(data.cvDownloadHref).trim()
+          : "cv.php";
+      cvBtn.dataset.cvFetchUrl = fetchUrl;
+      cvBtn.dataset.cvSaveAs =
+        data.cvSaveAsFilename != null && String(data.cvSaveAsFilename).trim() !== ""
+          ? String(data.cvSaveAsFilename).trim()
+          : "Anand_Aage_DevOps_Architect_CV.pdf";
+
+      const staticRaw =
+        (data.cvStaticPdfPath && String(data.cvStaticPdfPath).trim()) ||
+        (cvMeta && cvMeta.pdfRelativePath && String(cvMeta.pdfRelativePath).trim()) ||
+        "";
+      if (staticRaw) {
+        const enc = encodeURI(staticRaw);
+        cvBtn.dataset.cvFallbackUrl = enc;
+        cvBtn.href = enc;
+      } else {
+        delete cvBtn.dataset.cvFallbackUrl;
+        cvBtn.href = "#";
+      }
     }
   }
 
@@ -415,6 +442,7 @@
       achievements,
       personal,
       footer,
+      cvMeta,
     ] = await Promise.all([
       loadJson("meta"),
       loadJson("navigation"),
@@ -426,10 +454,11 @@
       loadJson("achievements"),
       loadJson("personal"),
       loadJson("footer"),
+      loadOptionalJson("cv"),
     ]);
 
     document.title = meta.documentTitle;
-    renderNav(document.querySelector(".site-header"), navigation);
+    renderNav(document.querySelector(".site-header"), navigation, cvMeta);
     renderHero(document.querySelector(".hero"), hero);
     renderSkills(document.querySelector(".section-toolchain"), skills);
     renderExperience(document.querySelector(".section-career"), experience);
@@ -440,7 +469,53 @@
     renderFooter(document.querySelector(".site-footer"), footer);
   }
 
+  function initCvDownload() {
+    const el = document.querySelector(".site-header__cv");
+    if (!el) return;
+
+    async function blobLooksLikePdf(blob) {
+      const t = (blob.type || "").toLowerCase();
+      if (t.includes("pdf")) return true;
+      const buf = await blob.slice(0, 5).arrayBuffer();
+      return new TextDecoder().decode(buf) === "%PDF-";
+    }
+
+    async function fetchPdfBlob(url) {
+      if (!url) return null;
+      const res = await fetch(url, { credentials: "same-origin" });
+      if (!res.ok) return null;
+      const blob = await res.blob();
+      if (await blobLooksLikePdf(blob)) return blob;
+      return null;
+    }
+
+    el.addEventListener("click", async (e) => {
+      e.preventDefault();
+      const fetchUrl = el.dataset.cvFetchUrl || "cv.php";
+      const fallbackUrl = el.dataset.cvFallbackUrl || "";
+      const saveAs = el.dataset.cvSaveAs || "Anand_Aage_DevOps_Architect_CV.pdf";
+
+      let blob = await fetchPdfBlob(fetchUrl);
+      if (!blob && fallbackUrl) blob = await fetchPdfBlob(fallbackUrl);
+      if (!blob) {
+        console.warn("CV download: expected a PDF from", fetchUrl, fallbackUrl || "(no fallback)");
+        return;
+      }
+
+      const objUrl = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = objUrl;
+      a.download = saveAs;
+      a.style.display = "none";
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      URL.revokeObjectURL(objUrl);
+    });
+  }
+
   function initBehavior() {
+    initCvDownload();
     const sections = document.querySelectorAll("section[id]");
     const navLinks = document.querySelectorAll(".nav-link");
 

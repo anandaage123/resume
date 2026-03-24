@@ -2,6 +2,7 @@
   "brand": "DevOps Architect",
   "downloadCvLabel": "Download CV",
   "cvDownloadHref": "cv.php",
+  "cvSaveAsFilename": "Anand_Aage_DevOps_Architect_CV.pdf",
   "links": [
     { "href": "#about", "label": "About" },
     { "href": "#skills", "label": "Skills" },
