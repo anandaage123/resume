@@ -639,16 +639,15 @@
     // Custom mouse pointer trail with GSAP smooth follow
     const cursorDot = document.getElementById('cursor-dot');
     const cursorRing = document.getElementById('cursor-ring');
-    const canHover = window.matchMedia('(hover: hover)').matches;
-    const isCoarse = window.matchMedia('(pointer: coarse)').matches;
     const isSmallScreen = window.matchMedia('(max-width: 1024px)').matches;
-    const useCustomCursor = canHover && !isCoarse && !isSmallScreen;
+    const useCustomCursor = !isSmallScreen;
 
     if (!useCustomCursor) {
         cursorDot.style.display = 'none';
         cursorRing.style.display = 'none';
         document.body.style.cursor = 'auto';
         document.body.classList.remove('desktop-cursor');
+        document.querySelectorAll('.floating-bubble').forEach(el => el.style.display = 'none');
     } else {
         document.body.classList.add('desktop-cursor');
 
