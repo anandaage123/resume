@@ -144,6 +144,8 @@
             opacity: 1;
             box-shadow: 0 0 32px rgba(0, 218, 243, 0.8);
         }
+
+        /* Custom cursor — only on fine-pointer (mouse) devices */
         #cursor-dot, #cursor-ring {
             position: fixed;
             pointer-events: none;
@@ -174,8 +176,22 @@
             border-color: rgba(0, 218, 243, 1) !important;
             opacity: 1 !important;
         }
-        body, a, button, input {
-            cursor: none !important;
+
+        /* Fine pointer only: show custom cursor and hide default */
+        @media (pointer: fine) {
+            body, a, button, input {
+                cursor: none !important;
+            }
+        }
+
+        /* Coarse pointer (touch): hide custom cursor elements, restore default cursor */
+        @media (pointer: coarse) {
+            #cursor-dot, #cursor-ring {
+                display: none !important;
+            }
+            body, a, button, input {
+                cursor: auto !important;
+            }
         }
     </style>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/gsap.min.js"></script>
@@ -624,36 +640,40 @@
     window.addEventListener('resize', updateBubbles);
     updateBubbles();
 
-    // Custom mouse pointer trail with GSAP smooth follow
-    const cursorDot = document.getElementById('cursor-dot');
-    const cursorRing = document.getElementById('cursor-ring');
-    let mouseX = window.innerWidth / 2;
-    let mouseY = window.innerHeight / 2;
-    let ringX = mouseX;
-    let ringY = mouseY;
+    // Custom cursor — only initialised on fine-pointer (mouse/trackpad) devices.
+    // On touch screens (phones & tablets) the cursor elements are hidden via CSS
+    // and the JS never runs, so the stuck-circle bug cannot occur.
+    if (window.matchMedia('(pointer: fine)').matches) {
+        const cursorDot = document.getElementById('cursor-dot');
+        const cursorRing = document.getElementById('cursor-ring');
+        let mouseX = window.innerWidth / 2;
+        let mouseY = window.innerHeight / 2;
+        let ringX = mouseX;
+        let ringY = mouseY;
 
-    window.addEventListener('mousemove', event => {
-        mouseX = event.clientX;
-        mouseY = event.clientY;
-        gsap.to(cursorDot, { x: mouseX, y: mouseY, duration: 0.08, ease: 'power1.out' });
-    });
-
-    const animateRing = () => {
-        ringX += (mouseX - ringX) * 0.14;
-        ringY += (mouseY - ringY) * 0.14;
-        gsap.set(cursorRing, { x: ringX, y: ringY });
-        requestAnimationFrame(animateRing);
-    };
-    animateRing();
-
-    const interactiveTargets = 'a, button, .hover-card-glow, .nav-link';
-    document.querySelectorAll(interactiveTargets).forEach(item => {
-        item.addEventListener('mouseenter', () => {
-            cursorRing.classList.add('cursor-hover');
+        window.addEventListener('mousemove', event => {
+            mouseX = event.clientX;
+            mouseY = event.clientY;
+            gsap.to(cursorDot, { x: mouseX, y: mouseY, duration: 0.08, ease: 'power1.out' });
         });
-        item.addEventListener('mouseleave', () => {
-            cursorRing.classList.remove('cursor-hover');
+
+        const animateRing = () => {
+            ringX += (mouseX - ringX) * 0.14;
+            ringY += (mouseY - ringY) * 0.14;
+            gsap.set(cursorRing, { x: ringX, y: ringY });
+            requestAnimationFrame(animateRing);
+        };
+        animateRing();
+
+        const interactiveTargets = 'a, button, .hover-card-glow, .nav-link';
+        document.querySelectorAll(interactiveTargets).forEach(item => {
+            item.addEventListener('mouseenter', () => {
+                cursorRing.classList.add('cursor-hover');
+            });
+            item.addEventListener('mouseleave', () => {
+                cursorRing.classList.remove('cursor-hover');
+            });
         });
-    });
+    }
 </script>
 </body></html>
