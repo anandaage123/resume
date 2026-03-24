@@ -1,6 +1,7 @@
 /**
  * Loads JSON from /content and renders the portfolio. Serve the site over HTTP
- * (e.g. php -S localhost:8080 or npx serve) so fetch() can read the files.
+ * with PHP (e.g. php -S localhost:8080) so fetch() can read JSON and Download CV
+ * can use cv.php to pick the newest PDF in PDF/.
  */
 (function () {
   const CONTENT_BASE = "content";
@@ -34,7 +35,15 @@
       wrap.appendChild(a);
     });
     const cvBtn = container.querySelector(".site-header__cv");
-    if (cvBtn) cvBtn.textContent = data.downloadCvLabel;
+    if (cvBtn) {
+      cvBtn.textContent = data.downloadCvLabel;
+      cvBtn.setAttribute("aria-label", data.downloadCvLabel);
+      const cvHref = data.cvDownloadHref != null && String(data.cvDownloadHref).trim() !== ""
+        ? String(data.cvDownloadHref).trim()
+        : "cv.php";
+      cvBtn.href = cvHref;
+      cvBtn.removeAttribute("download");
+    }
   }
 
   function renderHero(root, data) {

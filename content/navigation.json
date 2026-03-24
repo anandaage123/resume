@@ -1,6 +1,7 @@
 {
   "brand": "DevOps Architect",
   "downloadCvLabel": "Download CV",
+  "cvDownloadHref": "cv.php",
   "links": [
     { "href": "#about", "label": "About" },
     { "href": "#skills", "label": "Skills" },
