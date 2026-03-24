@@ -181,8 +181,8 @@
         body, a, button, input {
             cursor: none !important;
         }
-        @media (hover: none), (pointer: coarse) {
-            .floating-bubble {
+        @media (hover: none), (pointer: coarse), (max-width: 1024px) {
+            #cursor-dot, #cursor-ring, .floating-bubble {
                 display: none !important;
             }
             body, a, button, input {
@@ -641,7 +641,8 @@
     const cursorRing = document.getElementById('cursor-ring');
     const canHover = window.matchMedia('(hover: hover)').matches;
     const isCoarse = window.matchMedia('(pointer: coarse)').matches;
-    const useCustomCursor = canHover && !isCoarse;
+    const isSmallScreen = window.matchMedia('(max-width: 1024px)').matches;
+    const useCustomCursor = canHover && !isCoarse && !isSmallScreen;
 
     if (!useCustomCursor) {
         cursorDot.style.display = 'none';
