@@ -1,11 +1,11 @@
 {
   "name": "Anand Aage",
-  "yearBadge": "/ 2024",
+  "yearBadge": "/ 2025",
   "socialLinks": [
-    { "label": "GitHub", "href": "#" },
-    { "label": "LinkedIn", "href": "#" },
-    { "label": "Stack Overflow", "href": "#" },
+    { "label": "GitHub", "href": "https://github.com/anandaage123" },
+    { "label": "LinkedIn", "href": "https://www.linkedin.com/in/anand-aage/" },
+    { "label": "Hashnode", "href": "https://anandaage.hashnode.dev/" },
     { "label": "Terminal", "href": "#" }
   ],
-  "copyright": "© 2024 Digital Architect Infrastructure. Built with Automation."
+  "copyright": "© 2025 Anand Aage. All rights reserved."
 }
