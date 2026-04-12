@@ -4,8 +4,7 @@
   "socialLinks": [
     { "label": "GitHub", "href": "https://github.com/anandaage123" },
     { "label": "LinkedIn", "href": "https://www.linkedin.com/in/anand-aage/" },
-    { "label": "Hashnode", "href": "https://anandaage.hashnode.dev/" },
-    { "label": "Terminal", "href": "#" }
+    { "label": "Hashnode", "href": "https://anandaage.hashnode.dev/" }
   ],
   "copyright": "© 2025 Anand Aage. All rights reserved."
 }
