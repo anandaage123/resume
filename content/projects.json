@@ -1,41 +1,75 @@
 {
   "sectionHeading": {
-    "plain": "Infrastructure",
-    "accent": "Deployments"
+    "plain": "From Web Development to",
+    "accent": "Cloud Infrastructure"
   },
   "projects": [
     {
-      "title": "Advanced WooCommerce Subscription Platform",
+      "title": "Cloud-Native E-Commerce Deployment (12 Microservices)",
       "descriptionParts": [
-        { "text": "Integrated complex content restriction logic and payment gateways. Optimized database queries and caching to improve performance by ", "emphasis": false },
+        { "text": "Provisioned production-grade AWS infrastructure with ", "emphasis": false },
+        { "text": "Terraform", "emphasis": true },
+        { "text": " (VPC, IAM, EKS) and containerized a 12-service polyglot application (Go, Java, Python, Node.js). Shipped a full GitOps release pipeline with Kubernetes Ingress, ArgoCD, and GitHub Actions CI/CD.", "emphasis": false }
+      ],
+      "image": {
+        "src": "https://images.unsplash.com/photo-1695668548342-c0c1ad479aee?fm=jpg&q=80&w=1200&auto=format&fit=crop",
+        "alt": "Rack of servers in a data center representing cloud infrastructure"
+      },
+      "tags": ["AWS", "Terraform", "EKS", "Docker", "ArgoCD", "GitHub Actions"],
+      "highlights": [
+        "Infrastructure as Code (Terraform, VPC, EKS)",
+        "GitOps Continuous Delivery with ArgoCD"
+      ]
+    },
+    {
+      "title": "Automated CI/CD Pipeline for Kubernetes Deployments",
+      "descriptionParts": [
+        { "text": "Built a Jenkins-driven pipeline automating build, test, and release to a Kubernetes cluster on Amazon EKS. Defined pipeline-as-code with ", "emphasis": false },
+        { "text": "Jenkinsfile", "emphasis": true },
+        { "text": ", including SCM-triggered builds, parameterized deploys, and credential management across staging and production.", "emphasis": false }
+      ],
+      "image": {
+        "src": "https://images.unsplash.com/photo-1630524274689-2950ac0fc91e?fm=jpg&q=80&w=1200&auto=format&fit=crop",
+        "alt": "Coding workstation with multiple monitors displaying CI/CD pipeline configuration"
+      },
+      "tags": ["Jenkins", "Docker", "Kubernetes", "Amazon EKS", "AWS"],
+      "highlights": [
+        "Pipeline-as-Code with Jenkinsfile",
+        "Self-Healing, Auto-Scaling Kubernetes Deployments"
+      ]
+    },
+    {
+      "title": "Performance-Optimized E-Commerce Platform (WordPress)",
+      "descriptionParts": [
+        { "text": "Owned deployment and scaling of a high-traffic WooCommerce platform — the foundation my DevOps skills now build on. Tuned server-side caching and database queries, cutting load by ", "emphasis": false },
         { "text": "25%", "emphasis": true },
-        { "text": ".", "emphasis": false }
+        { "text": " and hardening the release process for zero-downtime updates.", "emphasis": false }
       ],
       "image": {
         "src": "https://lh3.googleusercontent.com/aida-public/AB6AXuAFbT1IJRwNAKG77CyX09SpqV-UuxHdS3tOFxvDpK2jTyaAidL_UpdK_u8RXAFOpTXEtyrscajlEiMMzLnyr0_4VM5O6nEcFvrVXKZ-OwE_GHs4FUrYfKtwBcnOVZDedXedSw7aT3ZrCM4qSH7B_edJARR_IDDp6OFAuosTTl3vUksg6fgEqtAvLsxqCpmiqtOenDN-wc2WvLoZ10EhLowI2fBrIghcMrWRgFThYvzh4ubn6G4AuOC3660ulxD62LG1huSQBGfA1cg",
         "alt": "Screenshot of an advanced e-commerce dashboard and interface"
       },
-      "tags": ["WooCommerce", "Stripe"],
+      "tags": ["WooCommerce", "Stripe", "Server Ops"],
       "highlights": [
-        "Custom Plugin Development",
-        "Content Restriction Engines"
+        "Custom Plugin & Release Engineering",
+        "Deployment Hardening & Performance Tuning"
       ]
     },
     {
-      "title": "High-Performance Learning Platform",
+      "title": "Learning Platform, Built for Scale",
       "descriptionParts": [
-        { "text": "Engineered a custom-themed educational portal. Achieved load times ", "emphasis": false },
+        { "text": "Engineered and deployed a custom-themed education portal, applying infrastructure-minded practices — caching layers, CDN edge delivery, and monitoring — to hit ", "emphasis": false },
         { "text": "< 1.5s", "emphasis": true },
-        { "text": " using advanced caching and CDN optimization.", "emphasis": false }
+        { "text": " load times under load.", "emphasis": false }
       ],
       "image": {
         "src": "https://lh3.googleusercontent.com/aida-public/AB6AXuCFzQcBIR32ybKcdyrnFaKUQmoDMsjp1s413RV9jfTMfLfSmvbYWpG13N3dl9wD3-tARhKM44YL1cetUTuUJfSsFrE5w6vIbRaICkhvy-sJmpDjk2pknQ8fUJPIoE9hiWz4RMbPeZZVz8pf_jsSKEwbQDaxeAUw7LB1VvitAYBFsqSMG38qM2CBDbfk2WKGnHAPrEbiYVf3x8zqY2UW_OL1zgyiEyCcB4Cuzfx-us2Wk0HWQYTsYf8A6KTxSmArVDv5x7Pm3Mn1vrw",
         "alt": "Close up of high speed web performance charts and lighthouse metrics"
       },
-      "tags": ["Lighthouse 95+", "Cloudflare","Aws","Jenkins","Kubernetes"],
+      "tags": ["Lighthouse 95+", "Cloudflare", "AWS", "Jenkins", "Kubernetes"],
       "highlights": [
-        "WP Rocket & ACF Pro Implementation",
-        "Advanced SEO & Mobile First Design"
+        "CDN & Edge Caching Architecture",
+        "Performance Monitoring & SEO Optimization"
       ]
     }
   ]
